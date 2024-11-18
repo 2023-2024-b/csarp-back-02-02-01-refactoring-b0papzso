@@ -28,16 +28,18 @@ namespace Kreata.Backend.Repos
         {
             ControllerResponse response = new ControllerResponse();
             _dbContext.ChangeTracker.Clear();
+
             _dbContext.Entry(student).State = EntityState.Modified;
+
             try
             {
                 await _dbContext.SaveChangesAsync();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                response.AppendNewError(e.Message);
+                response.AppendNewError(ex.Message);
                 response.AppendNewError($"{nameof(StudentRepo)} osztály, {nameof(UpdateStudentAsync)} metódusban hiba keletkezett");
-                response.AppendNewError($"{student} frissítése nem sikerült!");
+                response.AppendNewError($"{student} frissítése nem sikerült!"); 
             }
             return response;
         }

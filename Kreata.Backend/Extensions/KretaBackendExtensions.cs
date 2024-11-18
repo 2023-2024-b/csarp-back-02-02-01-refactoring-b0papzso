@@ -41,9 +41,17 @@ namespace Kreata.Backend.Extensions
             );
         }
 
-        public static void ConfigureRepos(this IServiceCollection services) 
-        { 
+        public static void ConfigureRepos(this IServiceCollection services)
+        {
             services.AddScoped<IStudentRepo, StudentRepo>();
+            services.AddScoped<ITeacherRepo, TeacherRepo>();
+            services.AddScoped<IParentRepo, ParentRepo>();
+            services.AddScoped<IAdminRepo, AdminRepo>();
+            services.AddScoped<IPassengerRepo, PassengerRepo>();
+            services.AddScoped<IDriverRepo, DriverRepo>();
         }
+
+
+
     }
 }
